@@ -1,0 +1,108 @@
+.menubtn {
+  width: 200px;
+  height: 50px;
+  border: none;
+  margin-right: 10px;
+  position: relative;
+  top: 7px;
+  color: white;
+  font-family: InaiMathi;
+  background: none;
+  font-size: 16pt;
+
+}
+#products {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+
+}
+
+#konzole {
+  float: right;
+  position: absolute;
+  top: 100px;
+  right: 50px;
+}
+#notebooky {
+  float: right;
+  position: absolute;
+  top: 100px;
+  right: 50px;
+}
+.buy {
+position: absolute;
+  top: 150px;
+  left: 90px;
+}
+.part1 {
+  position: absolute;
+  left: 10px;
+}
+.descrip {
+  float: right;
+  position: absolute;
+  width: 30%;
+  left: 35%;
+  top: 100px;
+  text-align: justify;
+}
+
+.productname {
+  font-family: "Avenir Next";
+  font-size: 14pt;
+  position: relative;
+  top: 50px;
+  left: 18px;
+}
+
+.buybtn {
+  position: absolute;
+  background: none;
+  width: 290px;
+  height: 50px;
+  text-align: center;
+  left: 85px;
+  border: 2px solid indianred;;
+  top: 520px;
+}
+
+.menubtn:focus {outline:0;}
+
+.menubtn:hover {
+  color: darkred;
+}
+#main-title {
+  position: relative;
+  top: -8px;
+}
+.searchbtn {
+  height: 25px;
+  position: relative;
+  top: 15px;
+  border: none;
+
+}
+#categories {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 60px;
+  background: indianred;
+}
+#products {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#nav {
+position: relative;
+  left: -3%;
+
+  bottom: 0px;
+}
+
+

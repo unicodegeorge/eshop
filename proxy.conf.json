@@ -1,0 +1,6 @@
+{
+  "/rest-api": {
+    "target": "http://kodytek.cz:8080/",
+    "secure": false
+  }
+}

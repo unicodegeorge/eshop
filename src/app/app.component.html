@@ -1,0 +1,80 @@
+<div id="categories">
+  <h1 id="main-title">GESHOP</h1>
+  <button class="menubtn" *ngFor="let category of categories"
+          (click)="getProducts(category.id)">{{category.name}}
+
+  </button>
+
+  <input style="height: 20px; width: 200px; top: 15px; position: relative" type="text" name="search" id="search-bar">
+  <button class="searchbtn">Search</button>
+
+</div>
+
+
+<div id="products">
+  <div *ngFor="let product of products | paginate: {id: 'listing_pagination',
+itemsPerPage: 1,
+currentPage: page,
+totalItems: numOfProduct}" style="width: 90%; height: 590px;">
+
+    <h1 class="productname">{{product.title}}</h1>
+
+    <div id="notebooky" *ngIf="pageCount==2">
+      <h3>Parametry</h3>
+      <p> Frek. procesoru : {{product.parameters["Frekvence procesoru"]}}</p>
+      <p>Hmotnost : {{product.parameters["Hmotnost"]}}</p>
+      <p> Kapacita SSD : {{product.parameters["Kapaciat SSD"]}}</p>
+      <p>Model graf. karty : {{product.parameters["Model grafické karty"]}}</p>
+      <p>Model procesor : {{product.parameters["Model procesor"]}}</p>
+
+
+      <p>OS : {{product.parameters["Operační systém"]}}</p>
+      <p>Rozliseni : {{product.parameters["Rozlišení"]}}</p>
+      <p>Rozmery : {{product.parameters["Rozměry"]}}</p>
+      <p>Uhlopricka displeje : {{product.parameters["Uhlopříčka displeje"]}}</p>
+      <p>Znacka : {{product.parameters["Značka"]}}</p>
+
+    </div>
+
+    <div id="konzole" *ngIf="pageCount==1">
+      <h3>Parametry</h3>
+      <p> CPU: {{product.parameters["CPU"]}}</p>
+      <p>GPU : {{product.parameters["GPU"]}}</p>
+      <p> Rozliseni displeje : {{product.parameters["Rozlišení displeje"]}}</p>
+      <p>Velikost displeje : {{product.parameters["Velikost displeje"]}}</p>
+      <p>Wifi : {{product.parameters["Wifi"]}}</p>
+      <p>Znacka : {{product.parameters["Značka"]}}</p>
+
+
+    </div>
+    <img style="float: left; position: relative; top: 110px;" width="300"
+         src="/rest-api/{{ product.images[0].miniaturePath }}">
+
+    <div style="display: none" class="description" id="details{{product.id}}">
+      <div class="descrip">
+        <p>{{product.description}}</p>
+      </div>
+
+
+    </div>
+
+
+    <div class="buy">
+      <p class="onStock">Cena : {{product.price / 100}}CZK</p>
+      <p class="unitsOnStock">Skladem : {{product.unitsOnStock}} kusu</p>
+
+    </div>
+
+
+    <div id="details{{product.id}}">
+      <button class="buybtn" (click)="toggleDetails(product.id)">Podrobnosti</button>
+    </div>
+  </div>
+
+
+</div>
+<div id="nav" *ngIf="products.length > 0">
+  <pagination-controls id="listing_pagination" maxSize="8" directionLinks="true"
+                       (pageChange)="page = $event"></pagination-controls>
+</div>
+
