@@ -15,12 +15,13 @@ export class AppComponent implements OnInit {
   categories = [];
   products = [];
   openedDetails = [];
-  parameters = [];
   numOfProduct: Number
   page:Number=1
   znacka: String
   pageCount: number;
+  currentId: number;
 
+  searchBar: string;
 
 
 
@@ -52,18 +53,34 @@ export class AppComponent implements OnInit {
     }
   }
 
+  search(keyWord) {
+    console.log("Keyword = " + keyWord);
+    this.products = [];
+    this.httpClient.get<Products>('/rest-api/api/categories/' + this.currentId, {headers: this.token}).subscribe((data) => {
+      for(let i = 0; i < data.products.length; i++) {
+        if(data.products[i].title.indexOf(keyWord) != -1) {
+          this.products.push(data.products[i]);
+        } else {
 
+        }
+
+        console.log(this.products);
+      }
+
+
+    });
+  }
 
   getProducts(id) {
-
-    this.httpClient.get<Products>('/rest-api/api/categories/' + id, {headers: this.token}).subscribe((data) => {
+    this.currentId = id;
+    this.httpClient.get<Eshopi>('/rest-api/api/categories/' + id, {headers: this.token}).subscribe((data) => {
       this.products = data.products;
       this.pageCount = data.pagesCount;
 
 
       console.log(this.pageCount);
-      this.numOfProducts = data.products.length;
-      console.log(this.numOfProducts);
+      this.numOfProduct = data.products.length;
+      console.log(this.numOfProduct);
       console.log(data);
     }, (error) => {
       console.log(error);

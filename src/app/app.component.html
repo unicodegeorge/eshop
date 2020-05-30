@@ -5,8 +5,8 @@
 
   </button>
 
-  <input style="height: 20px; width: 200px; top: 15px; position: relative" type="text" name="search" id="search-bar">
-  <button class="searchbtn">Search</button>
+  <input style="height: 20px; width: 200px; top: 15px; position: relative" type="text" *ngIf="currentId!=undefined" placeholder="Prohledejte tuto kategorii" [(ngModel)]="searchBar" name="search" id="search-bar">
+  <button *ngIf="currentId!=undefined" (click)="search(searchBar)" class="searchbtn">Search</button>
 
 </div>
 
@@ -40,13 +40,15 @@ totalItems: numOfProduct}" style="width: 90%; height: 590px;">
       <h3>Parametry</h3>
       <p> CPU: {{product.parameters["CPU"]}}</p>
       <p>GPU : {{product.parameters["GPU"]}}</p>
-      <p> Rozliseni displeje : {{product.parameters["Rozlišení displeje"]}}</p>
-      <p>Velikost displeje : {{product.parameters["Velikost displeje"]}}</p>
+      <p> Rozliseni displeje : {{product.parameters["Rozslišení displeje"]}}</p>
+      <p>Velikost displeje : {{product.parameters["Velkost displeje"]}}</p>
       <p>Wifi : {{product.parameters["Wifi"]}}</p>
       <p>Znacka : {{product.parameters["Značka"]}}</p>
 
 
     </div>
+
+    
     <img style="float: left; position: relative; top: 110px;" width="300"
          src="/rest-api/{{ product.images[0].miniaturePath }}">
 
@@ -57,6 +59,7 @@ totalItems: numOfProduct}" style="width: 90%; height: 590px;">
 
 
     </div>
+
 
 
     <div class="buy">

@@ -4,7 +4,8 @@ export interface Products {
   descriprion: string;
   unitsOnStock: number;
   price: number;
-  images: Image[];
+  images: [];
   parameters: [];
-  ratings: Rating[];
+  ratings: [];
+  products: [];
 }
